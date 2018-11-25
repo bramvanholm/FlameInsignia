@@ -2,7 +2,7 @@ package gameConditions;
 
 public class GameOver {
 
-	public static void victoryGameCloser() {
+	public static void victoryCloser() {
 		do { 
 			// GameGUI
 			

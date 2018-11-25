@@ -22,10 +22,10 @@ public class CombatCalculator {
 	}
 	
 	//BL: Combat Calculations: Successful hit + damage
-	public static void main(String[] args) {
+	public void performCombat() {
 		
 		//Hit + damage of Ally unit
-		if (this.unit == Ally) {
+		if (this.Unit instanceof Ally) {
 			int rn1 = RNG.generateRN();
 			int rn2 = RNG.generateRN();
 			int hitThreshold = RNG.calculateHitThreshold(rn1,rn2);
@@ -33,7 +33,8 @@ public class CombatCalculator {
 
 			if (trueHitAlly > hitThreshold) {
 				//BL: with set.*?
-				this.Enemy.HP = calculateDamage(this.Ally.ATK,this.Enemy.DEF, this.Enemy.HP);
+				int remaininghp = calculateDamage(this.Ally.ATK,this.Enemy.DEF, this.Enemy.HP);
+				Unit.setHp(remaininghp);
 				
 			// Attack misses	
 			} else {
