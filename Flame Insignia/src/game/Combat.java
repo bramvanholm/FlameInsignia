@@ -32,44 +32,57 @@ public class Combat {
 		return h;
 	}
 	
+	//Hit + damage of Ally unit 
+	public static void allyAttacks(Unit Ally, Unit Enemy) {
+		int rn1 = generateRN();
+		int rn2 = generateRN();
+		int hitThreshold = calculateHitThreshold(rn1,rn2);
+		int trueHitAlly = calculateHit(Ally.getHIT(),Enemy.getEVA());
+
+		if (trueHitAlly > hitThreshold) {
+			//BL: with set.*?
+			int remaininghp = calculateDamage(Ally.getATK(),Enemy.getDEF(), Enemy.getHP());
+			Enemy.setHP(remaininghp);
+			
+		// Attack misses	
+		} else {
+			 //BL: No action = return void/null?
+		}
+	}
+	
+	//Hit + damage of Enemy unit
+	public static void enemyAttacks(Unit Ally, Unit Enemy) {
+		int rn1 = generateRN();
+		int rn2 = generateRN();
+		int hitThreshold = calculateHitThreshold(rn1,rn2);
+		int trueHitEnemy = calculateHit(Enemy.getHIT(),Ally.getEVA());
+
+		if (trueHitEnemy > hitThreshold) {
+			//BL: with set.*?
+			int remaininghp = calculateDamage(Enemy.getATK(), Ally.getDEF(), Ally.getHP());
+			Ally.setHP(remaininghp);
+			
+		//Attack misses	
+		} else {
+			//BL: No action= return void/null?
+		}
+	}
 	
 	//BL: Combat Calculations: Successful hit + damage
 	public static void performCombat(Unit Ally, Unit Enemy) {
 		
-		//Hit + damage of Ally unit
 		if (Unit instanceof Ally) { //BL: Or if (turn =="Allies")
-			int rn1 = generateRN();
-			int rn2 = generateRN();
-			int hitThreshold = calculateHitThreshold(rn1,rn2);
-			int trueHitAlly = calculateHit(Ally.getHIT(),Enemy.getEVA());
 
-			if (trueHitAlly > hitThreshold) {
-				//BL: with set.*?
-				int remaininghp = calculateDamage(Ally.getATK(),Enemy.getDEF(), Enemy.getHP());
-				Enemy.setHP(remaininghp);
-				
-			// Attack misses	
-			} else {
-				 //BL: No action = return void/null?
-			}
-			//BL: pop-up message with Ally and Enemy health
+			allyAttacks(Ally, Enemy);
+			checkUnitHealth(Enemy); //BL: Define method in Unit?
+			enemyAttacks(Ally, Enemy);
 			
-		//Hit + damage of Enemy unit
 		} else {
-			int rn1 = generateRN();
-			int rn2 = generateRN();
-			int hitThreshold = calculateHitThreshold(rn1,rn2);
-			int trueHitEnemy = calculateHit(Enemy.getHIT(),Ally.getEVA());
+			
+			enemyAttacks(Ally, Enemy);			
+			checkUnitHealth(Ally); //BL: Define method in Unit?
+			allyAttacks(Ally, Enemy);
 
-			if (trueHitEnemy > hitThreshold) {
-				//BL: with set.*?
-				int remaininghp = calculateDamage(Ally.getATK(), Enemy.getDEF(), Enemy.getHP());
-				Enemy.setHP(remaininghp);
-				
-			//Attack misses	
-			} else {
-				//BL: No action= return void/null?
-			}
 		}
 		//BL: EXP?
 		//BL: message pop-up: #HP of each Unit left after battle

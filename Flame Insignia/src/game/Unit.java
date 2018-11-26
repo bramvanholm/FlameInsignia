@@ -3,6 +3,7 @@ package game;
 public abstract class Unit {
 	//Defining unit variables
 	//HP: Hit Points/Health; HIT: Hit%; ATK: Attack; DEF: Defence; EVA: Evasion/dodge; MOV: Movement range
+	private String NAME;
 	private int HP;
 	private int HIT;
 	private int ATK;
@@ -10,7 +11,8 @@ public abstract class Unit {
 	private int EVA;
 	private int MOV;
 
-	Unit(int hp, int hit, int atk, int def, int mov) {
+	Unit(String name, int hp, int hit, int atk, int def, int mov) {
+		this.NAME = name;
 		this.HP = hp;
 		this.HIT = hit;
 		this.ATK = atk;
@@ -19,6 +21,9 @@ public abstract class Unit {
 		this.MOV =mov;
 	}
 
+	public String getName() {
+		return this.NAME;
+	}
 	public int getHP() {
 		return this.HP;
 	}
