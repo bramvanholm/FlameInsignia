@@ -5,8 +5,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import game.Unit;
+import game.Ally;
+import game.Enemy;
 
-public class StartGUI extends JFrame {
+
+public class StartGUI extends JFrame{
 
 	StartGUI(){
 
@@ -35,11 +39,11 @@ public class StartGUI extends JFrame {
 				+" You run outside, prepared for battle, and try to find allies willing to fight back and rescue the envoy...</html>";
 
 
-// Assigning text to labels
+		// Assigning text to labels
 		JLabel introLabel1 = new JLabel(introText1, JLabel.LEFT);
 		JLabel introLabel2 = new JLabel(introText2, JLabel.LEFT);
 		JLabel introLabel3 = new JLabel(introText3, JLabel.LEFT); //JTextPane/JTextArea?
-// Making the buttons
+		// Making the buttons
 		JPanel choicePanel1 = new JPanel();
 		JRadioButton choiceButton1 = new JRadioButton(choiceText1);
 		JRadioButton choiceButton2 = new JRadioButton(choiceText2);
@@ -48,13 +52,13 @@ public class StartGUI extends JFrame {
 		JRadioButton choiceButton4 = new JRadioButton(choiceText4);
 		JRadioButton choiceButton5 = new JRadioButton(choiceText5);
 		JRadioButton choiceButton6 = new JRadioButton(choiceText6);
-		
+
 		JButton startButton =new JButton("Start Battle");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Flame Insignia: Prologue");
 
-//Setting the Layout of the buttons
+		//Setting the Layout of the buttons
 		choicePanel1.setLayout(new GridLayout(3,1));
 		choicePanel1.add(choiceButton1);
 		choicePanel1.add(choiceButton2);
@@ -63,7 +67,7 @@ public class StartGUI extends JFrame {
 		choiceGroup1.add(choiceButton1);
 		choiceGroup1.add(choiceButton2);
 		choiceGroup1.add(choiceButton3);
-		
+
 		choicePanel2.setLayout(new GridLayout(3,1));
 		choicePanel2.add(choiceButton4);
 		choicePanel2.add(choiceButton5);
@@ -72,7 +76,28 @@ public class StartGUI extends JFrame {
 		choiceGroup2.add(choiceButton4);
 		choiceGroup2.add(choiceButton5);
 		choiceGroup2.add(choiceButton6);
-	
+
+		//setting actionListeners
+		//BL: choiceButton1.addActionListener? or/and in the actionListener below?
+		//setting actioListener for running GameGUI
+		startButton.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent event){
+				//try {
+					//Execute Button choices 1
+					//Execute Button choices 2
+				//} catch(InputMismatchException ime) { //BL: Define new InputMismatchException
+					//BL: message pop-up: "choose options"
+				//}
+				
+				dispose();
+				SwingUtilities.invokeLater(new Runnable(){
+					public void run(){
+						new GameGUI();
+					}
+				});
+			}
+		});
+
 		//Setting the overall layout
 		setLayout(new GridLayout(6,1));
 		add(introLabel1);
@@ -86,13 +111,13 @@ public class StartGUI extends JFrame {
 		pack();
 		setVisible(true);
 	}
-	
+
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
 				new StartGUI();
 			}
 		});
-
 	}
 }
