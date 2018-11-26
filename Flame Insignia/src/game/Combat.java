@@ -5,7 +5,7 @@ import java.util.Random;
 public class Combat {
 
 	//BL: "import" this.Ally + this.Enemy; Via GameGUI
-	public int calculateHit(int hit, int eva) {
+	public static int calculateHit(int hit, int eva) {
 		int trueHit = hit - eva;
 		return trueHit;
 	}
@@ -34,7 +34,7 @@ public class Combat {
 	
 	
 	//BL: Combat Calculations: Successful hit + damage
-	public void performCombat(Unit Ally, Unit Enemy) {
+	public static void performCombat(Unit Ally, Unit Enemy) {
 		
 		//Hit + damage of Ally unit
 		if (Unit instanceof Ally) { //BL: Or if (turn =="Allies")
