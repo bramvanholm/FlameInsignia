@@ -35,21 +35,21 @@ public abstract class Unit {
 		return this.HIT;
 	}
 	public void setHIT(int raisedhit) {
-		this.HIT=raisedhit;		
+		this.HIT+=raisedhit;		
 	}
 	//
 	public int getATK() {
 		return this.ATK;
 	}
 	public void setATK(int raisedatk) {
-		this.ATK=raisedatk;	
+		this.ATK+=raisedatk;	
 	}
 	//
 	public int getDEF() {
 		return this.DEF;
 	}
 	public void setDEF(int raiseddef) {
-		this.DEF=raiseddef;	
+		this.DEF+=raiseddef;	
 	}	
 	//
 	public int getEVA() {

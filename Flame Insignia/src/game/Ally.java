@@ -4,11 +4,11 @@ public class Ally extends Unit {
 
 	private int EXP;
 
-	Ally(String name, int hp, int hit, int atk, int def) {
+	public Ally(String name, int hp, int hit, int atk, int def) {
 		super(name,hp,hit,atk,def,5);
 		this.EXP = 0;
 	}
-	
+
 
 	// How to make(/initialize?) units? => UnitPlacer?
 
@@ -19,12 +19,11 @@ public class Ally extends Unit {
 		//BL: For prince: Insert/increase stats from choice startGUI
 		Ally retainer = new Ally("Retainer",20,75,10,7);
 		Ally guard = new Ally("Guard",22, 75,11,6);
-		
+
 		retainer.checkTerrain("Forest");
-		
+
 
 		System.out.println(prince.getMOV()+" "+retainer.getEVA());
 	}
-
 
 }
