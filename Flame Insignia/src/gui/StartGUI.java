@@ -47,7 +47,7 @@ public class StartGUI extends JFrame{
 		introLabel1.setFont(font);
 		introLabel2.setFont(font);
 		introLabel3.setFont(font);
-		
+
 		// Making the buttons
 		JPanel choicePanel1 = new JPanel();
 		JRadioButton choiceButton1 = new JRadioButton(choiceText1);
@@ -63,10 +63,10 @@ public class StartGUI extends JFrame{
 		choiceButton4.setFont(font);
 		choiceButton5.setFont(font);
 		choiceButton6.setFont(font);
-		
+
 		JButton startButton =new JButton("Start Battle");
 		startButton.setFont(new Font("Calibri",Font.BOLD, 18));
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Flame Insignia: Prologue");
 
@@ -96,54 +96,56 @@ public class StartGUI extends JFrame{
 			public void actionPerformed (ActionEvent event){
 				//BL: Initialize prince+ enemy units here?
 				//BL: or return a value that is used in UnitPlacer/Initialization?
-				
+
 				// BL: This is not ideal and I don't know how to do the try statement/Exception
-				
-				//try {
-				if(choiceButton1.isSelected()) {
-					Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
-					Enemy boss = new Enemy("Boss",15,70,7,5,0);
-				} else if (choiceButton2.isSelected()) {
-					Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit4 = new Enemy("Bandit1",15,70,7,5);
-					Enemy boss = new Enemy("Boss",15,70,7,5,0);	
-				} else if (choiceButton3.isSelected()) {
-					Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit4 = new Enemy("Bandit1",15,70,7,5);
-					Enemy bandit5 = new Enemy("Bandit1",15,70,7,5);
-					Enemy boss = new Enemy("Boss",15,70,7,5,0);
-				}
-				
-				Ally prince = new Ally("Prince",25,75,8,7);
-				if(choiceButton4.isSelected()) {
-					prince.setHIT(10);
-				System.out.println(prince.getHIT());
-				} else if (choiceButton5.isSelected()) {
-					prince.setATK(2);
-				System.out.println(prince.getATK());
-				} else if (choiceButton6.isSelected()) {
-					prince.setDEF(2);
-				System.out.println(prince.getDEF());
-				}
-				 
-					//Execute Button choices 1
-					//Execute Button choices 2
-				//} catch(InputMismatchException ime) { //BL: Define new InputMismatchException
-					//BL: message pop-up: "choose options"
-				//}
-				
-				dispose();
-				SwingUtilities.invokeLater(new Runnable(){
-					public void run(){
-						new GameGUI();
+
+				try {
+					if(choiceButton1.isSelected()) {
+						Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
+						Enemy boss = new Enemy("Boss",15,70,7,5,0);
+					} else if (choiceButton2.isSelected()) {
+						Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit4 = new Enemy("Bandit1",15,70,7,5);
+						Enemy boss = new Enemy("Boss",15,70,7,5,0);	
+					} else if (choiceButton3.isSelected()) {
+						Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit4 = new Enemy("Bandit1",15,70,7,5);
+						Enemy bandit5 = new Enemy("Bandit1",15,70,7,5);
+						Enemy boss = new Enemy("Boss",15,70,7,5,0);
+					} else {
+						throw new Exception();
 					}
-				});
+
+					Ally prince = new Ally("Prince",25,75,8,7);
+					if(choiceButton4.isSelected()) {
+						prince.setHIT(10);
+						
+					} else if (choiceButton5.isSelected()) {
+						prince.setATK(2);
+						
+					} else if (choiceButton6.isSelected()) {
+						prince.setDEF(2);
+						
+					} else {
+						throw new Exception();
+					}
+					
+					dispose();
+					SwingUtilities.invokeLater(new Runnable(){
+						public void run(){
+							new GameGUI();
+						}
+					});
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null,"Please answer all of the envoys messages");
+				}
+
 			}
 		});
 
