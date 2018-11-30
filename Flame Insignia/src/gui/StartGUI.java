@@ -54,6 +54,7 @@ public class StartGUI extends JFrame{
 		JRadioButton choiceButton6 = new JRadioButton(choiceText6);
 
 		JButton startButton =new JButton("Start Battle");
+		
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Flame Insignia: Prologue");
@@ -77,12 +78,29 @@ public class StartGUI extends JFrame{
 		choiceGroup2.add(choiceButton5);
 		choiceGroup2.add(choiceButton6);
 
-		//setting actionListeners
+
+		
+		//adding actionListeners
 		//BL: choiceButton1.addActionListener? or/and in the actionListener below?
 		//setting actioListener for running GameGUI
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent event){
+				//BL: Either initialize prince here and get it from here for UnitPlacer
+				//BL: Or return a value or variable that is used in UnitPlacer to initialize the prince
+				Ally prince = new Ally("Prince",25,75,8,7);
 				//try {
+				switch(choiceGroup2.getElements()) {
+				case "choiceButton4": prince.setHIT(10);
+				System.out.println(prince.getHIT());;
+				break;
+				case "choiceButton5": prince.setATK(2);
+				System.out.println(prince.getATK());
+				break;
+				case "choiceButton6": prince.setDEF(2);
+				System.out.println(prince.getDEF());
+				break;
+				}
+				 
 					//Execute Button choices 1
 					//Execute Button choices 2
 				//} catch(InputMismatchException ime) { //BL: Define new InputMismatchException
