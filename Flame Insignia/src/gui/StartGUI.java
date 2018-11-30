@@ -40,9 +40,14 @@ public class StartGUI extends JFrame{
 
 
 		// Assigning text to labels
+		Font font = new Font("Calibri",Font.PLAIN, 16);
 		JLabel introLabel1 = new JLabel(introText1, JLabel.LEFT);
 		JLabel introLabel2 = new JLabel(introText2, JLabel.LEFT);
 		JLabel introLabel3 = new JLabel(introText3, JLabel.LEFT); //JTextPane/JTextArea?
+		introLabel1.setFont(font);
+		introLabel2.setFont(font);
+		introLabel3.setFont(font);
+		
 		// Making the buttons
 		JPanel choicePanel1 = new JPanel();
 		JRadioButton choiceButton1 = new JRadioButton(choiceText1);
@@ -52,10 +57,16 @@ public class StartGUI extends JFrame{
 		JRadioButton choiceButton4 = new JRadioButton(choiceText4);
 		JRadioButton choiceButton5 = new JRadioButton(choiceText5);
 		JRadioButton choiceButton6 = new JRadioButton(choiceText6);
-
-		JButton startButton =new JButton("Start Battle");
+		choiceButton1.setFont(font);
+		choiceButton2.setFont(font);
+		choiceButton3.setFont(font);
+		choiceButton4.setFont(font);
+		choiceButton5.setFont(font);
+		choiceButton6.setFont(font);
 		
-
+		JButton startButton =new JButton("Start Battle");
+		startButton.setFont(new Font("Calibri",Font.BOLD, 18));
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Flame Insignia: Prologue");
 
@@ -78,27 +89,47 @@ public class StartGUI extends JFrame{
 		choiceGroup2.add(choiceButton5);
 		choiceGroup2.add(choiceButton6);
 
-
-		
 		//adding actionListeners
 		//BL: choiceButton1.addActionListener? or/and in the actionListener below?
 		//setting actioListener for running GameGUI
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent event){
-				//BL: Either initialize prince here and get it from here for UnitPlacer
-				//BL: Or return a value or variable that is used in UnitPlacer to initialize the prince
-				Ally prince = new Ally("Prince",25,75,8,7);
+				//BL: Initialize prince+ enemy units here?
+				//BL: or return a value that is used in UnitPlacer/Initialization?
+				
+				// BL: This is not ideal and I don't know how to do the try statement/Exception
+				
 				//try {
-				switch(choiceGroup2.getElements()) {
-				case "choiceButton4": prince.setHIT(10);
-				System.out.println(prince.getHIT());;
-				break;
-				case "choiceButton5": prince.setATK(2);
+				if(choiceButton1.isSelected()) {
+					Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
+					Enemy boss = new Enemy("Boss",15,70,7,5,0);
+				} else if (choiceButton2.isSelected()) {
+					Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit4 = new Enemy("Bandit1",15,70,7,5);
+					Enemy boss = new Enemy("Boss",15,70,7,5,0);	
+				} else if (choiceButton3.isSelected()) {
+					Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit4 = new Enemy("Bandit1",15,70,7,5);
+					Enemy bandit5 = new Enemy("Bandit1",15,70,7,5);
+					Enemy boss = new Enemy("Boss",15,70,7,5,0);
+				}
+				
+				Ally prince = new Ally("Prince",25,75,8,7);
+				if(choiceButton4.isSelected()) {
+					prince.setHIT(10);
+				System.out.println(prince.getHIT());
+				} else if (choiceButton5.isSelected()) {
+					prince.setATK(2);
 				System.out.println(prince.getATK());
-				break;
-				case "choiceButton6": prince.setDEF(2);
+				} else if (choiceButton6.isSelected()) {
+					prince.setDEF(2);
 				System.out.println(prince.getDEF());
-				break;
 				}
 				 
 					//Execute Button choices 1
@@ -125,7 +156,7 @@ public class StartGUI extends JFrame{
 		add(introLabel3);
 		add(startButton);
 
-		setPreferredSize(new Dimension(900,700));
+		setPreferredSize(new Dimension(1050,800));
 		pack();
 		setVisible(true);
 	}
