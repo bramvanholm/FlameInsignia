@@ -94,56 +94,99 @@ public class StartGUI extends JFrame{
 		//setting actioListener for running GameGUI
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent event){
-				//BL: Initialize prince+ enemy units here?
-				//BL: or return a value that is used in UnitPlacer/Initialization?
-
-				// BL: This is not ideal and I don't know how to do the try statement/Exception
-
+				
 				try {
 					if(choiceButton1.isSelected()) {
-						Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
-						Enemy boss = new Enemy("Boss",15,70,7,5,0);
-					} else if (choiceButton2.isSelected()) {
-						Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit4 = new Enemy("Bandit1",15,70,7,5);
-						Enemy boss = new Enemy("Boss",15,70,7,5,0);	
-					} else if (choiceButton3.isSelected()) {
-						Enemy bandit1 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit2 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit3 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit4 = new Enemy("Bandit1",15,70,7,5);
-						Enemy bandit5 = new Enemy("Bandit1",15,70,7,5);
-						Enemy boss = new Enemy("Boss",15,70,7,5,0);
-					} else {
-						throw new Exception();
-					}
-
-					Ally prince = new Ally("Prince",25,75,8,7);
-					if(choiceButton4.isSelected()) {
-						prince.setHIT(10);
+						String difficulty = "Easy";
 						
-					} else if (choiceButton5.isSelected()) {
-						prince.setATK(2);
-						
-					} else if (choiceButton6.isSelected()) {
-						prince.setDEF(2);
-						
-					} else {
-						throw new Exception();
-					}
-					
-					dispose();
-					SwingUtilities.invokeLater(new Runnable(){
-						public void run(){
-							new GameGUI();
+						if(choiceButton4.isSelected()) {
+							String princeStat = "HIT";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});
+						} else if (choiceButton5.isSelected()) {
+							String princeStat = "ATK";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});
+						} else if (choiceButton6.isSelected()) {
+							String princeStat = "DEF";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});
+						} else {
+							throw new Exception();
 						}
-					});
+
+					} else if (choiceButton2.isSelected()) {
+						String difficulty = "Standard";
+						
+						if(choiceButton4.isSelected()) {
+							String princeStat = "HIT";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});
+						} else if (choiceButton5.isSelected()) {
+							String princeStat = "ATK";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});
+						} else if (choiceButton6.isSelected()) {
+							String princeStat = "DEF";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});
+						} else {
+							throw new Exception();
+						}
+
+					} else if (choiceButton3.isSelected()) {
+						String difficulty = "Hard";
+						
+						if(choiceButton4.isSelected()) {
+							String princeStat = "HIT";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});
+						} else if (choiceButton5.isSelected()) {
+							String princeStat = "ATK";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});
+						} else if (choiceButton6.isSelected()) {
+							String princeStat = "DEF";
+							SwingUtilities.invokeLater(new Runnable(){
+								public void run(){
+									new GameGUI(difficulty, princeStat);
+								}
+							});							
+						} else {
+							throw new Exception();
+						}
+
+					} else {
+						throw new Exception();
+					}
+					dispose();
+
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null,"Please answer all of the envoys messages");
+					JOptionPane.showMessageDialog(null,"Please answer all of the envoys questions");
 				}
 
 			}
