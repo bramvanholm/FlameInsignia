@@ -24,12 +24,19 @@ public abstract class Unit {
 	public String getName() {
 		return this.NAME;
 	}
+	public void setName(String name) {
+		this.NAME = name;
+	}
 	public int getHP() {
 		return this.HP;
 	}
 	public void setHP(int remaininghp) {
 		this.HP=remaininghp;		
 	}	
+	public String getInfo() {
+		return this.getName() +"   HP "+ this.getHP();
+		}
+	
 	//
 	public int getHIT() {
 		return this.HIT;
@@ -57,6 +64,9 @@ public abstract class Unit {
 	}
 	public void setEVA(int raisedEVA) {
 		this.EVA=raisedEVA;	
+	}
+	public String getStats() {
+		return "HIT " +this.getHIT()+ "   ATK " +this.getATK()+ "   DEF "+this.getDEF()+ "   EVA "+ this.getEVA();
 	}
 	//
 	public int getMOV() {
