@@ -4,8 +4,8 @@ public class Ally extends Unit {
 
 	private int EXP;
 
-	public Ally(String name, int hp, int hit, int atk, int def) {
-		super(name,hp,hit,atk,def,5);
+	public Ally(String name, int maxhp, int hit, int atk, int def) {
+		super(name,maxhp,hit,atk,def,5);
 		this.EXP = 0;
 	}
 

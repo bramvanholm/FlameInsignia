@@ -2,18 +2,20 @@ package game;
 
 public abstract class Unit {
 	//Defining unit variables
-	//HP: Hit Points/Health; HIT: Hit%; ATK: Attack; DEF: Defence; EVA: Evasion/dodge; MOV: Movement range
+	//HP:/Health; HIT: Hit%; ATK: Attack; DEF: Defence; EVA: Evasion/dodge; MOV: Movement range
 	private String NAME;
 	private int HP;
+	private int MAXHP;
 	private int HIT;
 	private int ATK;
 	private int DEF;
 	private int EVA;
 	private int MOV;
 
-	Unit(String name, int hp, int hit, int atk, int def, int mov) {
+	Unit(String name, int maxhp, int hit, int atk, int def, int mov) {
 		this.NAME = name;
-		this.HP = hp;
+		this.HP = maxhp;
+		this.MAXHP = maxhp;
 		this.HIT = hit;
 		this.ATK = atk;
 		this.DEF = def;
@@ -33,8 +35,14 @@ public abstract class Unit {
 	public void setHP(int remaininghp) {
 		this.HP=remaininghp;		
 	}	
+	public int getMAXHP() {
+		return this.MAXHP;
+	}
+	public void setMAXHP(int maxhp) {
+		this.MAXHP=maxhp;		
+	}
 	public String getInfo() {
-		return this.getName() +"   HP "+ this.getHP();
+		return this.getName() +"   HP "+ this.getHP()+"/"+this.getMAXHP();
 		}
 	
 	//
