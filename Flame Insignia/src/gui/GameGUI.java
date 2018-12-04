@@ -102,7 +102,7 @@ public class GameGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Flame Insignia: Battle");
 
-		statPanel.setLayout(new GridLayout(16,2));
+		statPanel.setLayout(new GridLayout(12,1));
 		addInfo(statPanel, font, prince, guard1, guard2, boss, bandit1, bandit2, bandit3, bandit4);
 		
 		
