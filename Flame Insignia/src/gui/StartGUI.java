@@ -12,7 +12,7 @@ import game.Enemy;
 
 public class StartGUI extends JFrame{
 
-	//Flavor text
+	//Flavour text
 	String introText1 =  "<html>The relationship between your kingdom and its neighbor has always been strained:<br>"
 			+"Over the centuries, many wars have been fought between the two countries, and even in times of relative peace, small-scale battles occur frequently.<br>"
 			+"But a change is happening this winter: An envoy with royal blood was sent by the neighbouring kingdom to arrange talks for peace and tariffs,<br>"
@@ -36,7 +36,7 @@ public class StartGUI extends JFrame{
 			+"You immediately realize the severity of the situation: If something were to happen to the envoy, it would mean war. And it would not end in your life time...<br>"
 			+" You run outside, prepared for battle, and try to find allies willing to fight back and rescue the envoy...</html>";
 
-	//Initializing panels, labels, buttons ...
+	//Initialising panels, labels, buttons ...
 	Font font = new Font("Calibri",Font.PLAIN, 16);
 	JLabel introLabel1 = new JLabel(introText1, JLabel.LEFT);
 	JLabel introLabel2 = new JLabel(introText2, JLabel.LEFT);
@@ -63,12 +63,14 @@ public class StartGUI extends JFrame{
 			component.setFont(font);
 		}
 	}
+	
 	//Method to add buttons to a ButtonGroup
 	private static void addButtonGroup (ButtonGroup buttonGroup, JRadioButton ... buttons) {
 		for(JRadioButton button : buttons) {
 			buttonGroup.add(button);
 		}
 	}
+	
 	// Method to get variables from the choices
 	public String[] getGameParameters() {
 		String[] gameParam = new String[2];
@@ -87,7 +89,6 @@ public class StartGUI extends JFrame{
 		} else if (choiceButton6.isSelected()) {
 			gameParam[1] = "DEF";
 		}
-		
 		return gameParam;
 	}
 	
@@ -125,18 +126,17 @@ public class StartGUI extends JFrame{
 		choiceButton4.setSelected(true);
 		
 		
-		//Setting actionListener to start the GameGUI
+		//Setting actionListener to start the GameGUI with the variables gotten from the choices
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent event){
-
-					getGameParameters();
-					SwingUtilities.invokeLater(new Runnable(){
-						public void run(){
-							String[] gameParameter = getGameParameters();
-							new GameGUI(gameParameter[0], gameParameter[1]);
-						}
-					});
-					dispose();
+				getGameParameters();
+				SwingUtilities.invokeLater(new Runnable(){
+					public void run(){
+						String[] gameParameter = getGameParameters();
+						new GameGUI(gameParameter[0], gameParameter[1]);
+					}
+				});
+				dispose();
 			}
 		});
 
@@ -145,7 +145,7 @@ public class StartGUI extends JFrame{
 		setVisible(true);
 	}
 
-
+	//Running the StartGUI
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
