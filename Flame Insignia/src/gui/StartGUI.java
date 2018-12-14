@@ -8,10 +8,13 @@ import javax.swing.*;
 import game.Unit;
 import game.Ally;
 import game.Enemy;
+import game.Game;
+
 
 
 public class StartGUI extends JFrame{
 
+	
 	//Flavour text
 	String introText1 =  "<html>The relationship between your kingdom and its neighbor has always been strained:<br>"
 			+"Over the centuries, many wars have been fought between the two countries, and even in times of relative peace, small-scale battles occur frequently.<br>"
@@ -92,8 +95,9 @@ public class StartGUI extends JFrame{
 		return gameParam;
 	}
 	
-	StartGUI(){
 
+	public StartGUI(Game myGame){
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Flame Insignia: Prologue");
 		
@@ -129,13 +133,10 @@ public class StartGUI extends JFrame{
 		//Setting actionListener to start the GameGUI with the variables gotten from the choices
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent event){
-				getGameParameters();
-				SwingUtilities.invokeLater(new Runnable(){
-					public void run(){
-						String[] gameParameter = getGameParameters();
-						new GameGUI(gameParameter[0], gameParameter[1]);
-					}
-				});
+						
+				String[] gameParam = getGameParameters();
+				myGame.setGameParameters(gameParam);
+				
 				dispose();
 			}
 		});
@@ -144,13 +145,14 @@ public class StartGUI extends JFrame{
 		pack();
 		setVisible(true);
 	}
-
+/*
 	//Running the StartGUI
 	public static void main(String[] args) {
+
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
 				new StartGUI();
 			}
 		});
-	}
+	}*/
 }
