@@ -1,103 +1,117 @@
 package game;
 
 public abstract class Unit {
-	//Defining unit variables
+	//Unit variables
 	//HP:/Health; HIT: Hit%; ATK: Attack; DEF: Defence; EVA: Evasion/dodge; MOV: Movement range
-	private String NAME;
-	private int HP;
-	private int MAXHP;
-	private int HIT;
-	private int ATK;
-	private int DEF;
-	private int EVA;
-	private int MOV;
+	//only Eva, Hp and unitAlive can be altered so only they have update functions
+	private String unitName;
+	private int unitHp;
+	private int unitMaxHp;
+	private int unitHit;
+	private int unitAtk;
+	private int unitDef;
+	private int unitEva;
+	private int unitMov;
+	private boolean unitAlive;
 
-	Unit(String name, int maxhp, int hit, int atk, int def, int mov) {
-		this.NAME = name;
-		this.HP = maxhp;
-		this.MAXHP = maxhp;
-		this.HIT = hit;
-		this.ATK = atk;
-		this.DEF = def;
-		this.EVA = 0;
-		this.MOV =mov;
+	Unit(String NAME, int MAXHP, int HIT, int ATK, int DEF, int MOV) {
+		setName(NAME);
+		setMaxHp(MAXHP);
+		setHit(HIT);
+		setAtk(ATK);
+		setDef(DEF);
+		setMov(MOV);
+		setAlive();
+		setEva(0);
+		setHp(MAXHP); //unit with full health is created
 	}
 
+	// get and set functions for variables
 	public String getName() {
-		return this.NAME;
+		return this.unitName;
 	}
 	public void setName(String name) {
-		this.NAME = name;
+		this.unitName = name;
 	}
-	public int getHP() {
-		return this.HP;
-	}
-	public void setHP(int remaininghp) {
-		this.HP=remaininghp;		
-	}	
-	public int getMAXHP() {
-		return this.MAXHP;
-	}
-	public void setMAXHP(int maxhp) {
-		this.MAXHP=maxhp;		
-	}
-	public String getInfo() {
-		return this.getName() +"   HP "+ this.getHP()+"/"+this.getMAXHP();
-		}
 	
-	//
-	public int getHIT() {
-		return this.HIT;
+	public int getHp() {
+		return this.unitHp;
 	}
-	public void setHIT(int raisedhit) {
-		this.HIT+=raisedhit;		
+	public void setHp(int Hp) {
+		this.unitHp = Hp;
 	}
-	//
-	public int getATK() {
-		return this.ATK;
+	
+	public int getMaxHp() {
+		return this.unitMaxHp;
 	}
-	public void setATK(int raisedatk) {
-		this.ATK+=raisedatk;	
+	public void setMaxHp(int maxhp) {
+		this.unitMaxHp=maxhp;		
 	}
-	//
-	public int getDEF() {
-		return this.DEF;
+	
+	public int getHit() {
+		return this.unitHit;
 	}
-	public void setDEF(int raiseddef) {
-		this.DEF+=raiseddef;	
+	public void setHit(int hit) {
+		this.unitHit=hit;		
+	}
+	
+	public int getAtk() {
+		return this.unitAtk;
+	}
+	public void setAtk(int atk) {
+		this.unitAtk=atk;	
+	}
+	
+	public int getDef() {
+		return this.unitDef;
+	}
+	public void setDef(int def) {
+		this.unitDef=def;	
 	}	
-	//
-	public int getEVA() {
-		return this.EVA;
+	
+	public int getEva() {
+		return this.unitEva;
 	}
-	public void setEVA(int raisedEVA) {
-		this.EVA=raisedEVA;	
+	public void setEva(int eva) {
+		this.unitEva=eva;	
 	}
-	public String getStats() {
-		return "HIT " +this.getHIT()+ "   ATK " +this.getATK()+ "   DEF "+this.getDEF()+ "   EVA "+ this.getEVA();
+	
+	public int getMov() {
+		return this.unitMov;
 	}
-	//
-	public int getMOV() {
-		return this.MOV;
+	public void setMov(int mov) {
+		this.unitMov=mov;
 	}
-
-
-
-	//Checks terrain unit is standing on and temporarily raises stats
-	public void checkTerrain(String terrainName) {
-		//use switches
-		switch(terrainName) {
-		case "Plain": this.setEVA(0);;
-		break;
-
-		case "Forest": this.setEVA(20);
-		break;
-
-		case "Tent": this.setEVA(30);
-		break;
-		
-		case "Envoy": ;//Victory!
-		break;
+	
+	public boolean getAlive() {
+		return this.unitAlive;
+	}
+	public void setAlive() {
+		this.unitAlive=true;
+	}
+	
+	// update functions
+	public void updateHp(int damage) {
+		//make sure Hp will never drop below 0
+		int currentHp=getHp();
+		if(currentHp<=damage) {
+			letUnitDie();
 		}
+		this.unitHp=Math.max(0,currentHp-damage);
+	}
+	public void updateEva(int extra) {
+		int currentEva=getEva();
+		setEva(currentEva+extra);
+	}
+	public void letUnitDie() {
+		this.unitAlive=false;
+	}
+	
+	// information parsers
+	public String getInfo() {
+		return this.getName() +"   HP "+ getHp()+"/"+getMaxHp();
+		}
+	public String getStats() {
+		return "HIT " +getHit()+ "   ATK " +getAtk()+ "   DEF "+getDef()+ "   EVA "+ getEva();
 	}
 }
