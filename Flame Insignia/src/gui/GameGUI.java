@@ -45,14 +45,14 @@ public class GameGUI extends JFrame implements ActionListener{
 
 		// link game
 		this.currentGame=game_in;
-			
+		/*	
 		Boss boss = new Boss("Boss",25,75,9,6);
 		Enemy bandit1 = new Enemy("Bandit 1",13,70,8,5);
 		Enemy bandit2 = new Enemy("Bandit 2",13,70,8,5);
 		Enemy bandit3 = new Enemy("Bandit 3",13,70,8,5);
 		Enemy bandit4 = new Enemy("Bandit 4",13,70,8,5);
 
-		Ally guard1 = new Ally("Paljas",22,75,6,6);
+		Ally guard1 = new Ally("Retainer",22,75,6,6);
 		Ally guard2 = new Ally("Guard",22,75,6,6);
 		Prince prince = new Prince("Prince",25,75,7,5);
 
@@ -60,7 +60,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		// Setting Layout of the panel with status information
 		infoPanel.setLayout(new GridLayout(13,1));
 		addInfo(infoPanel, font, 10, prince, guard1, guard2, boss, bandit1, bandit2, bandit3, bandit4);
-		 
+		*/ 
 		// setup gridPanel
 		gridPanelSetup();
 
