@@ -46,7 +46,7 @@ public class Game {
 		Enemy bandit3 = new Enemy("Bandit 3",13,70,8,5);
 		Enemy bandit4 = new Enemy("Bandit 4",13,70,8,5);
 
-		Ally guard1 = new Ally("Guard 1",22,75,6,6);
+		Ally guard1 = new Ally("Retainer",22,75,6,6);
 		Ally guard2 = new Ally("Guard 2",22,75,6,6);
 		Prince prince = new Prince("Prince",25,75,7,5);
 
@@ -99,14 +99,15 @@ public class Game {
 
 	public void startGui(Game myGame) {
 		this.myStartGUI = new StartGUI(myGame);
+		
 		for (int i=0; i<1;) {
 			if(myGame.gameParameters[0]!= null) {
 				i++;
 			}
 		}
-		
 		this.myGui=new GameGUI(myGame);
-		this.myGui.initiate();
+		this.myGui.initiate();	
+
 
 	}
 
@@ -161,7 +162,6 @@ public class Game {
 		this.allyTurn=0;
 		this.enemyTurn=0;
 
-
 		// here comes the actual game play
 		while((endPointReached==false)&(deadAllies<3)) {
 
@@ -192,7 +192,7 @@ public class Game {
 		myGame.startGui(myGame);
 		//myGame.setUnitStats(myGame.gameParameters, boss, prince, bandit1,bandit2,bandit3,bandit4);
 		myGame.startGame();
-
+		
 
 	}
 }
