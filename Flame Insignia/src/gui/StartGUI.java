@@ -37,7 +37,7 @@ public class StartGUI extends JFrame{
 	String introText3 = "<html>At nightfall your group sets up camp, and everyone, except for those on night duty, eventually goes to sleep in their respective tents.<br>"
 			+"Suddenly you wake up to screams. You hear a guard yell: 'Bandits! The mountain bandits are attacking! They've taken the envoy!'<br>"
 			+"You immediately realize the severity of the situation: If something were to happen to the envoy, it would mean war. And it would not end in your life time...<br>"
-			+" You run outside, prepared for battle, and try to find allies willing to fight back and rescue the envoy...</html>";
+			+" You run outside, prepared for battle, and try to find your retainers to fight back and rescue the envoy...</html>";
 
 	//Initialising panels, labels, buttons ...
 	Font font = new Font("Calibri",Font.PLAIN, 16);
@@ -136,7 +136,6 @@ public class StartGUI extends JFrame{
 						
 				String[] gameParam = getGameParameters();
 				myGame.setGameParameters(gameParam);
-				
 				dispose();
 			}
 		});
