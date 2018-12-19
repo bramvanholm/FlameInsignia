@@ -40,14 +40,14 @@ public class Game {
 		// else, string will be respectively ally or enemy
 
 		//initialising units with respective stats
-		Boss boss = new Boss("Boss",25,75,9,6);
-		Enemy bandit1 = new Enemy("Bandit 1",13,70,8,5);
-		Enemy bandit2 = new Enemy("Bandit 2",13,70,8,5);
-		Enemy bandit3 = new Enemy("Bandit 3",13,70,8,5);
-		Enemy bandit4 = new Enemy("Bandit 4",13,70,8,5);
+		Boss boss = new Boss("Bandit Leader",25,75,9,6);
+		Enemy bandit1 = new Enemy("Bandit",13,70,8,5);
+		Enemy bandit2 = new Enemy("Bandit",13,70,8,5);
+		Enemy bandit3 = new Enemy("Bandit",13,70,8,5);
+		Enemy bandit4 = new Enemy("Bandit",13,70,8,5);
 
 		Ally guard1 = new Ally("Retainer",22,75,6,6);
-		Ally guard2 = new Ally("Guard 2",22,75,6,6);
+		Ally guard2 = new Ally("Guard",22,75,6,6);
 		Prince prince = new Prince("Prince",25,75,7,5);
 
 
