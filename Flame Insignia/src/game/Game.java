@@ -12,13 +12,13 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
 
 import gui.GameGUI;
-import gui.StartGUI;
+import gui.IntroGUI;
 
 public class Game {
 	public Board board; // configuration of board and its tiles
 	public Unit[][] state; // current configuration of characters
 	public GameGUI myGui;
-	public StartGUI myStartGUI;
+	public IntroGUI myIntroGUI;
 	public int allyTurn;
 	public int enemyTurn;
 	public String[] gameParameters = new String[2];
@@ -98,7 +98,7 @@ public class Game {
 	}
 
 	public void startGui(Game myGame) {
-		this.myStartGUI = new StartGUI(myGame);
+		this.myIntroGUI = new IntroGUI(myGame);
 		
 		for (int i=0; i<1;) {
 			if(myGame.gameParameters[0]!= null) {
