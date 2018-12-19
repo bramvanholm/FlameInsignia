@@ -138,6 +138,7 @@ public class GameGUI extends JFrame implements ActionListener{
 		//format panel
 		gridPanel.setLayout(new GridLayout(8,8));
 	}
+	
 	// Showing the GameOver Dialog
 	public void showGameOver(String gameOverReason) {
 		JDialog gameOverDialog= new JDialog();
